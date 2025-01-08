@@ -3,6 +3,7 @@
 #include "memlayout.h"
 #include "riscv.h"
 #include "defs.h"
+#include "dtb.h"
 
 volatile static int started = 0;
 
@@ -10,7 +11,10 @@ volatile static int started = 0;
 void
 main()
 {
+  dtb_init();
+
   if(cpuid() == 0){
+
     consoleinit();
     printfinit();
     printf("\n");

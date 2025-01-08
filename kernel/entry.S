@@ -5,6 +5,8 @@
 .section .text
 .global _entry
 _entry:
+        la t0, dtb_pa        # Cargar la dirección de la variable global dtb_pa
+        sd a1, 0(t0)         # Guardar dtb_pa = a1
         # set up a stack for C.
         # stack0 is declared in start.c,
         # with a 4096-byte stack per CPU.
