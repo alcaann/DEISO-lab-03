@@ -11,10 +11,10 @@ volatile static int started = 0;
 void
 main()
 {
-  dtb_init();
 
   if(cpuid() == 0){
 
+    dtb_init();
     consoleinit();
     printfinit();
     printf("\n");

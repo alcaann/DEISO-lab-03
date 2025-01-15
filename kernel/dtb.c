@@ -16,6 +16,8 @@ int cpu_count = 0;
 
 // Variable para almacenar la dirección base del UART
 uint64 uart_base = 0;
+//added
+uint64 uart_irq = 0;
 
 // Estructura que representa la cabecera del Device Tree Blob (DTB)
 struct fdt_header {
@@ -241,6 +243,9 @@ process_prop(const char *prop_name, void *prop_value, uint32 len)
         else {
             panic("Invalid 'reg' property length for UART");
         }
+        
+    }else if(strcmp_custom(prop_name, "interrupts") == 0){
+        uart_irq = swap_uint32(((uint32 *)prop_value)[0]);
     }
     // Se pueden agregar más propiedades si es necesario
 }
